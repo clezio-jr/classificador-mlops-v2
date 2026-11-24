@@ -59,7 +59,7 @@ pipeline {
     }
 
     stage('CD') {
-      when { anyOf { tag 'v*'; expression { params.ROLLBACK_TAG } } }
+      when { anyOf { tag 'v*'; expression { params.ROLLBACK_TAG as boolean } } }
       input { message 'Fazer deploy em produção?' }
       stages {
         stage('Deploy') {
